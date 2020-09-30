@@ -1,0 +1,13 @@
+// 일일 박스오피스
+http://www.kobis.or.kr/kobis/business/main/searchMainDailyBoxOffice.do
+
+//실시간 예매율
+http://www.kobis.or.kr/kobis/business/main/searchMainRealTicket.do
+
+//좌석점유율순위
+http://www.kobis.or.kr/kobis/business/main/searchMainDailySeatTicket.do
+
+//온라인상영관 일일 
+http://www.kobis.or.kr/kobis/business/main/searchMainOnlineDailyBoxOffice.do
+
+http://www.kobis.or.kr/kobis/business/main/main.do
