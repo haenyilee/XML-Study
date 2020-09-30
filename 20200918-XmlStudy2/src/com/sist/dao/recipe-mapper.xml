@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.sist.dao.recipe-mapper">
+<!-- 데이터를 가져오는 SQL (recipe) -->
+	<select id="recipeListData" resultType="RecipeVO" parameterType="java.util.Map">
+		SELECT no,title,poster,chef,num 
+      	FROM (SELECT no,title,poster,chef,rownum as num 
+      	FROM (SELECT no,title,poster,chef 
+      	FROM recipe ORDER BY no DESC))
+      	WHERE num BETWEEN #{start} AND #{end}
+	</select>
+	
+	
+<!-- 총 페이지 구하기 -->
+	<select id="recipeTotalPage" resultType="int">
+		SELECT CEIL(COUNT(*)/12.0) FROM recipe
+	</select>
+</mapper>
