@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sawon_list>
+	<sawon sabun="1" name="홍길동" dept="개발부"/>
+	<sawon sabun="2" name="홍길은" dept="총무부"/>
+	<sawon sabun="3" name="홍길금" dept="기획부"/>
+	<sawon sabun="4" name="김길동" dept="영업부"/>
+	<sawon sabun="5" name="이길동" dept="자재부"/>	
+</sawon_list>
