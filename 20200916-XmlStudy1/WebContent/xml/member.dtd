@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	직접 제작할 일은 거의 없다.
+	하지만 현업에서는 dtd파일을 보고 xml을 제작할 수 있어야 한다.
+	예를 들면 현업에서 table을 설계할 일이 없지만, table내에 내장된 데이터를 읽을 줄 알아야 한다는 것과 같다. 
+	
+	? : 사용여부를 확인하는 기호 => 뒤에 ?가 붙어있으면 사용할 수도 있고, 사용하지 않을 수도 있음
+	| : 둘 중에 하나를 선택하는 것 => tr은 td|th
+	* : 여러번 사용이 가능한데 0번 이상 => 거의 모든 html태그 들이 여러번 사용할 수 있기 때문에 *임
+	+ : 여러번 사용이 가능한데 1번 이상 꼭 사용해야함 => xml
+	, : 순서 => a,b라고 적혀있으면 <a> <b> 순서로 써야함
+	
+	<html>
+		<head> ==> 생략 가능
+		</head>
+		<body>
+			<center> ==> 꼭 써야하는 것은 아님 : center?
+			</center>
+		</body>
+	<html>
+	
+	
+	member (list* | list+)
+	list (name,sex? , tel|subtel , addtess?)
+	<member>
+		<list>
+			<name></name>
+			<sex></sex>
+			<tel></tel>
+			<address></address>
+		</list>
+		
+		<list>
+			<name></name>
+			<sex></sex>
+			<subtel></subtel>
+			<address></address>
+		</list>
+	</member>
+
+-->
+<!ELEMENT member (list+)>
+<!ELEMENT list (name,sex,(tel|hp),address)>
+<!ELEMENT name (#PCDATA)> <!-- PCDATA의 의미 : 문자열이 들어간다는 뜻임-->
+<!ELEMENT sex (#PCDATA)>
+<!ELEMENT tel (#PCDATA)>
+<!ELEMENT hp (#PCDATA)>
+<!ELEMENT address (#PCDATA)>
+
+

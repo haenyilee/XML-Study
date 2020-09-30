@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+	dtd를 작성하지 않으면 ctr+space 눌렀을때 아무것도 뜨지 않음
+ -->
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<!-- mapper : SQL문장이 저장되는 위치 -->
+<!-- 
+	<마이바티스 만드는 순서>
+	1. ~VO 만들기 (컬럼명=변수명)
+	2. config.xml => Connection
+	3. music.xml => PreparedStatement , ResultSet
+		==> 이 파일은 테이블마다 1개씩 만들어야 한다.
+
+ -->
+
+<!-- namespace는 자바로 따지면 패키지명임 -->
+<mapper namespace="com.sist.dao.music">
+	<!-- 데이터 읽기 시작 -->
+	<select id="musicAllData" resultType="MusicVO">
+	<!-- 
+			 select id="musicAllData" resultType="MusicVO" 
+					=== 중복이 없는 속성	  ========== 실행 결과를 받는 클래스를 등록
+	-->
+		SELECT * FROM genie_music
+		ORDER BY mno ASC	
+		
+		
+	</select>
+</mapper>

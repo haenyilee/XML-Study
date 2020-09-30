@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!-- 
+
+	<<config.xml은 데이터 보낼 준비하는 파일 >>
+	
+-->
+
+<!DOCTYPE configuration
+ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-config.dtd">
+ <!-- 
+ 
+ ** 뒤에 물음표가 붙은 것들은 사용해도 되고, 사용하지 않아도 된다. **
+ ** 아래 요소들은 순서가 틀려지면 오류가 난다 **
+ (properties?, 
+ settings?, 
+ typeAliases?, 
+ typeHandlers?, 
+ objectFactory?, 
+ objectWrapperFactory?, 
+ reflectorFactory?, 
+ plugins?, 
+ environments?, 
+ databaseIdProvider?,
+ mappers?)
+ 
+  -->
+  
+
+
+  
+<configuration> <!-- 최상위 태그 : 환경설정을 하는 태그명 -->
+
+	<typeAliases> 
+	<!-- 
+		<<VO를 등록하는 위치>>
+		MyBatis에서 오라클을 연결해서 가지고 온 데이터를 저장하는데,
+		어느 클래스에 저장할지를 알려줘야 함. 그래서 vo를 등록하는 것임	
+		
+	 -->
+		<typeAlias type="com.sist.dao.MusicVO" alias="MusicVO"/>
+		<!-- 
+			 MusicVO에 가져온 값을 채워주게 됨		
+		 -->
+	</typeAliases>
+	
+	<!-- 
+		<<오라클 연결하는 부분>> : environments 
+		driver , url , username , password 정보를 넘겨주면 getConnection을 만들어줌
+	-->
+	
+	<!-- Content Model : (environment+)을 보면 +가 붙어있기 때문에 1번 이상 꼭 실행해야 함 -->
+	<environments default="development">
+		<!-- 오라클 연결 부분 : getConnection(), disConnection() -->
+		<environment id="development">
+			<transactionManager type="JDBC">
+			<!-- Commit,Rollback 즉 자바의 JDBC -->
+			</transactionManager>		
+			<dataSource type="POOLED">
+				<property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+				<!-- 
+					Class.forName("oracle.jdbc.driver.OracleDriver")
+				 -->
+				 
+				<property name="url" value="jdbc:oracle:thin:@211.238.142.181:1521:XE"/>
+        		<property name="username" value="hr"/>
+       			<property name="password" value="happy"/>
+			</dataSource>
+		</environment>
+	</environments>
+	<!-- 연결이 종료되고 sql문장을 읽어온다 -->
+	
+	
+	<!-- 
+		<<mapper>> : SQL 문장을 저장하는 공간
+		PreparedStatement => 매퍼는 새로운 파일을 만들어야 함
+	-->
+	<mappers>
+		
+		 <mapper resource="com/sist/dao/music.xml"/>
+		 <!-- 
+		sql문장이 많이 존재하면 xml코드가 길어져 속도가 늦어지기 때문에,
+		나눠서 작업을 할 수 있게 별도로 mapper파일을 제작해주는 것이다.
+		-->
+		 
+	
+	</mappers>
+</configuration>
